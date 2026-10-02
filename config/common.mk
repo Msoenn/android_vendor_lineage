@@ -38,8 +38,10 @@ else
 # Enable ADB authentication
 PRODUCT_SYSTEM_EXT_PROPERTIES += ro.adb.secure=1
 
-# Set ro.debuggable=0 for userdebug
+# Set ro.debuggable=0 for userdebug, unless the device keeps userdebug debuggable
+ifneq ($(CIRCA_DEBUGGABLE_USERDEBUG),true)
 PRODUCT_NOT_DEBUGGABLE_IN_USERDEBUG := true
+endif
 endif
 
 # Disable extra StrictMode features on all non-engineering builds
